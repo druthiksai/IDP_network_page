@@ -15,7 +15,7 @@
 		$stmt = $conn->prepare("insert into registration(firstName, lastName, gender, email, password, number) values(?, ?, ?, ?, ?, ?)");
 		$stmt->bind_param("sssssi", $firstName, $lastName, $gender, $email, $password, $number);
 		$execval = $stmt->execute();
-		echo $execval;
+		echo $execute();
 		echo "Registration successfully...";
 		$stmt->close();
 		$conn->close();
