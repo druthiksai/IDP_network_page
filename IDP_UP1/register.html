@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: rgb(51, 51, 51);
+  }
+
+  input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px;
+  }
+
+  button {
+    background-color: rgb(255, 107, 107);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 12px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: rgb(227, 91, 91);
+  }
+
+  .error-message {
+    color: red;
+    font-size: 14px;
+  }
+</style>
+<title>Registration Form</title>
+</head>
+<body>
+  <div class="container">
+    <h2 style="color: rgb(51, 51, 51);">Registration Form</h2>
+    <form action="signup.jsp">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="uname" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="uemail" required>
+      </div>
+      <div class="form-group">
+        <label for="locality">Locality:</label>
+        <input type="text" id="locality" name="uloc" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone No:</label>
+        <input type="tel" id="phone" name="uphone" required>
+        <p class="error-message" id="phone-error"></p>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="upass" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+        <p class="error-message" id="password-error"></p>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      var phone = document.getElementById("phone").value;
+      var phoneError = document.getElementById("phone-error");
+
+      if (!/^\d{10}$/.test(phone)) {
+        phoneError.textContent = "Phone number should have exactly 10 numerical digits.";
+        return false;
+      } else {
+        phoneError.textContent = "";
+      }
+
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirm-password").value;
+      var passwordError = document.getElementById("password-error");
+
+      if (password !== confirmPassword) {
+        passwordError.textContent = "Confirm password doesn't match with the password you entered.";
+        return false;
+      } else {
+        passwordError.textContent = "";
+        return true;
+      }
+    }
+  </script>
+</body>
+</html>
